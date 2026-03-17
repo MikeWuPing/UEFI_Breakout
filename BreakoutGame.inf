@@ -1,0 +1,46 @@
+## @file
+#  Breakout Game - A simple brick breaker game for UEFI Shell
+#
+#  This is a classic breakout/brick breaker game that uses UEFI GOP for
+#  graphics rendering. Control the paddle with arrow keys to bounce the ball
+#  and break all bricks.
+#
+#  Copyright (c) 2024. All rights reserved.<BR>
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = BreakoutGame
+  FILE_GUID                      = 7A3B5C8D-1E2F-4A6B-8C9D-0E1F2A3B4C5D
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UefiMain
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64
+#
+
+[Sources]
+  BreakoutGame.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiLib
+  UefiBootServicesTableLib
+  BaseLib
+  BaseMemoryLib
+  MemoryAllocationLib
+
+[Protocols]
+  gEfiGraphicsOutputProtocolGuid
+  gEfiSimpleTextInputExProtocolGuid
+
+[BuildOptions]
+  MSFT:*_*_*_CC_FLAGS = /wd4819
